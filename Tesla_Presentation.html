@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tesla Presentation</title>
+  <style>
+    :root {
+      --bg: #060606;
+      --panel: #111111;
+      --text: #f5f5f5;
+      --muted: #b9bcc3;
+      --accent: #e82127;
+      --accent-soft: #71171b;
+      --charcoal: #1b1d21;
+      --transition-ms: 700ms;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: radial-gradient(circle at top right, #161616 0%, var(--bg) 45%); color: var(--text); font-family: 'Segoe UI', Roboto, Arial, sans-serif; height: 100%; }
+    body { display: flex; flex-direction: column; min-height: 100vh; overflow: hidden; }
+    .app { display: grid; place-items: center; width: 100vw; height: 100vh; padding: 1rem; }
+    .deck { width: min(96vw, calc(96vh * 16 / 9)); aspect-ratio: 16 / 9; position: relative; background: linear-gradient(160deg, #0b0b0c, #121316); border: 1px solid #26282d; border-radius: 16px; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,.55); }
+    .slide { position: absolute; inset: 0; padding: clamp(1rem, 2.2vw, 2rem); opacity: 0; transform: translateX(6%); pointer-events: none; transition: opacity var(--transition-ms) ease, transform var(--transition-ms) ease; }
+    .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+    .slide.prev { transform: translateX(-5%); }
+    .slide-inner { height: 100%; border-radius: 12px; background: linear-gradient(155deg, rgba(255,255,255,0.01), rgba(255,255,255,0.03)); border: 1px solid #22252c; padding: clamp(1rem, 2vw, 2rem); display: flex; flex-direction: column; }
+    h2 { margin: 0 0 .4rem; font-size: clamp(1.2rem, 2.25vw, 2.2rem); line-height: 1.22; letter-spacing: .2px; color: #fff; }
+    .subtitle { margin: .2rem 0 .2rem; font-size: clamp(.95rem, 1.3vw, 1.2rem); color: #f1f1f1; font-weight: 500; }
+    .presenter { margin: 0 0 .8rem; font-size: clamp(.82rem, 1.08vw, 1rem); color: #f26a6d; font-weight: 600; }
+    ul { margin: .2rem 0 0 0; padding-left: 1.2rem; display: grid; gap: .5rem; font-size: clamp(.9rem, 1.12vw, 1.08rem); line-height: 1.34; color: var(--text); }
+    li::marker { color: var(--accent); }
+    .citation { margin-top: auto; padding-top: .7rem; border-top: 1px dashed #2d3138; font-size: clamp(.72rem, .94vw, .88rem); color: var(--muted); }
+    .reveal { opacity: 0; transform: translateY(8px); transition: opacity 420ms ease, transform 420ms ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    .controls { position: absolute; left: .65rem; right: .65rem; bottom: .6rem; display: flex; align-items: center; gap: .45rem; z-index: 5; }
+    .btn { border: 1px solid #2d3138; background: #14171c; color: var(--text); border-radius: 10px; padding: .5rem .75rem; font-size: .9rem; cursor: pointer; }
+    .btn:hover { background: #1b2027; }
+    .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .meta { margin-left: auto; display: flex; align-items: center; gap: .6rem; font-size: .85rem; color: var(--muted); }
+    .progress-wrap { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: #23252b; }
+    .progress { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), #ff444b); transition: width 300ms ease; }
+
+    .overview { position: absolute; inset: 0; z-index: 9; background: rgba(7,8,10,.96); display: none; padding: 1rem; overflow: auto; }
+    .overview.open { display: block; }
+    .overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .6rem; }
+    .ov-card { border: 1px solid #2d3138; background: #12161d; border-radius: 10px; color: #dce0e8; padding: .65rem; text-align: left; cursor: pointer; min-height: 96px; }
+    .ov-card .idx { color: #f26a6d; font-size: .8rem; margin-bottom: .4rem; }
+    .ov-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root { --transition-ms: 1ms; }
+      .reveal { transition: none; }
+      .progress { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="deck" id="deck" aria-live="polite">
+      
+    <section class="slide" data-index="0" aria-label="Slide 1: Tesla: From Innovation to Leadership — The Journey of Business Management and Growth">
+      <div class="slide-inner">
+        <h2>Tesla: From Innovation to Leadership — The Journey of Business Management and Growth</h2>
+        <p class='subtitle'>Academic &amp; Business Presentation</p>
+        <p class='presenter'>Course Team Presentation</p>
+        <ul><li class='reveal'>A strategic and managerial analysis of Tesla’s evolution, operating model, and growth choices.</li><li class='reveal'>Prepared with an evidence-based approach using official disclosures and trusted industry references.</li></ul>
+        <p class='citation'>Primary references include Tesla Form 10-K FY2023, Tesla investor updates, and official public sources.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="1" aria-label="Slide 2: Opening Hook: Why Tesla Matters">
+      <div class="slide-inner">
+        <h2>Opening Hook: Why Tesla Matters</h2>
+        
+        <p class='presenter'>Opening</p>
+        <ul><li class='reveal'>Tesla did not only launch EV products—it challenged how an auto company is designed, financed, and managed.</li><li class='reveal'>Its strategy links product, software, manufacturing, and brand into one integrated growth engine.</li><li class='reveal'>The key question: Which management choices created leadership, and which choices increase future risk?</li></ul>
+        <p class='citation'>Context synthesized from Tesla Form 10-K FY2023 and Tesla Investor Relations updates.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="2" aria-label="Slide 3: Roadmap">
+      <div class="slide-inner">
+        <h2>Roadmap</h2>
+        
+        <p class='presenter'>All Presenters</p>
+        <ul><li class='reveal'>Introduction and Overview of Tesla</li><li class='reveal'>Market and Opportunity</li><li class='reveal'>Business Model</li><li class='reveal'>Strategy and Competitive Advantage</li><li class='reveal'>Strategic Leadership and Decision-Making</li><li class='reveal'>Human Resources, Organizational Structure, and Culture</li><li class='reveal'>Production and Supply Chain at Tesla</li><li class='reveal'>Marketing and Brand Building</li><li class='reveal'>Financial Performance and Management at Tesla</li><li class='reveal'>Challenges and Future Opportunities</li><li class='reveal'>Conclusion and Lessons Learned</li></ul>
+        <p class='citation'>Agenda follows the required section sequence.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="3" aria-label="Slide 4: 1) Introduction and Overview of Tesla">
+      <div class="slide-inner">
+        <h2>1) Introduction and Overview of Tesla</h2>
+        
+        <p class='presenter'>Youssef Mohamed Ibrahim</p>
+        <ul><li class='reveal'>Tesla, Inc. is an integrated clean energy and electric mobility company with automotive and energy segments.</li><li class='reveal'>Core activities span vehicle design, manufacturing, software development, charging infrastructure, and energy storage.</li><li class='reveal'>Mission focus: accelerating the world’s transition to sustainable energy.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023, “Business” and “Overview” sections.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="4" aria-label="Slide 5: Tesla Origins, Development, Activities, and Objectives">
+      <div class="slide-inner">
+        <h2>Tesla Origins, Development, Activities, and Objectives</h2>
+        
+        <p class='presenter'>Youssef Mohamed Ibrahim</p>
+        <ul><li class='reveal'>Origins: founded in 2003; public listing in 2010; scaled from niche premium EVs to high-volume global platforms.</li><li class='reveal'>Development milestones include gigafactory expansion, vertically integrated software stack, and charging ecosystem growth.</li><li class='reveal'>Objectives combine volume growth, lower unit costs, and long-term software/energy ecosystem expansion.</li></ul>
+        <p class='citation'>Sources: Tesla Form 10-K FY2023; Tesla company timeline and investor materials.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="5" aria-label="Slide 6: Section 1 Summary">
+      <div class="slide-inner">
+        <h2>Section 1 Summary</h2>
+        
+        <p class='presenter'>Youssef Mohamed Ibrahim</p>
+        <ul><li class='reveal'>Tesla evolved from product innovation into a management system that links strategy, operations, and technology.</li><li class='reveal'>Its integrated objective is scale + efficiency + platform effects across mobility and energy.</li></ul>
+        <p class='citation'>Transition to Section 2: market structure and competitive dynamics.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="6" aria-label="Slide 7: 2) Market and Opportunity">
+      <div class="slide-inner">
+        <h2>2) Market and Opportunity</h2>
+        
+        <p class='presenter'>Soheir Ahmed Hassan Sayed</p>
+        <ul><li class='reveal'>Global auto demand is transitioning from ICE to electrified vehicles under regulatory, cost, and technology pressure.</li><li class='reveal'>Tesla competes with both legacy manufacturers and EV-native entrants across multiple price and segment tiers.</li><li class='reveal'>Opportunity depends on scale economics, charging convenience, software capability, and supply resilience.</li></ul>
+        <p class='citation'>Sources: IEA Global EV Outlook (latest edition), Tesla Form 10-K FY2023 risk and competition disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="7" aria-label="Slide 8: Market Transition: Tesla vs. Traditional Manufacturers">
+      <div class="slide-inner">
+        <h2>Market Transition: Tesla vs. Traditional Manufacturers</h2>
+        
+        <p class='presenter'>Soheir Ahmed Hassan Sayed</p>
+        <ul><li class='reveal'>Legacy OEMs carry transition complexity: ICE asset base, dealer systems, and slower software integration cycles.</li><li class='reveal'>Tesla’s direct model and unified software architecture support faster iteration and pricing response.</li><li class='reveal'>Competitive pressure is increasing as global EV offerings expand and price competition intensifies.</li></ul>
+        <p class='citation'>Sources: Tesla Form 10-K FY2023; public filings from incumbent automakers; IEA transition data.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="8" aria-label="Slide 9: Porter’s Five Forces (Tesla Focus)">
+      <div class="slide-inner">
+        <h2>Porter’s Five Forces (Tesla Focus)</h2>
+        
+        <p class='presenter'>Soheir Ahmed Hassan Sayed</p>
+        <ul><li class='reveal'>Rivalry: High and rising due to EV scaling by incumbents and new entrants.</li><li class='reveal'>Buyer power: Increasing as alternatives improve and price transparency rises.</li><li class='reveal'>Supplier power: Moderate to high in battery materials and selected semiconductor categories.</li><li class='reveal'>Threat of substitutes: Moderate (public transit, hybrids, ICE in some markets).</li><li class='reveal'>Threat of new entrants: Moderate (high capital and execution barriers, but strong policy pull for EVs).</li></ul>
+        <p class='citation'>Framework interpretation based on Tesla disclosures and industry structure reports.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="9" aria-label="Slide 10: Section 2 Summary">
+      <div class="slide-inner">
+        <h2>Section 2 Summary</h2>
+        
+        <p class='presenter'>Soheir Ahmed Hassan Sayed</p>
+        <ul><li class='reveal'>The opportunity remains large, but advantage depends on operating discipline and strategic adaptability.</li><li class='reveal'>Market leadership now requires defending margins while sustaining innovation speed.</li></ul>
+        <p class='citation'>Transition to Section 3: how Tesla’s business model captures value.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="10" aria-label="Slide 11: 3) Business Model">
+      <div class="slide-inner">
+        <h2>3) Business Model</h2>
+        
+        <p class='presenter'>Shorouk El-Sayed Badawy</p>
+        <ul><li class='reveal'>Tesla monetizes across vehicle sales, software-enabled features, services, and energy products.</li><li class='reveal'>The model combines product margins with long-term lifecycle revenue opportunities.</li><li class='reveal'>Control over key activities improves speed and consistency, but raises execution burden.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023 segment and revenue disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="11" aria-label="Slide 12: Business Model Canvas: Value, Customers, Revenue, Channels">
+      <div class="slide-inner">
+        <h2>Business Model Canvas: Value, Customers, Revenue, Channels</h2>
+        
+        <p class='presenter'>Shorouk El-Sayed Badawy</p>
+        <ul><li class='reveal'>Value proposition: high-performance EVs, software-centric experience, integrated charging, and clean-energy ecosystem.</li><li class='reveal'>Customer segments: retail drivers, fleet buyers, energy customers, and software feature subscribers.</li><li class='reveal'>Revenue streams: automotive sales, regulatory credits, services/other, and energy generation &amp; storage.</li><li class='reveal'>Channels: direct digital/physical sales, service centers, charging network, and online account ecosystem.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="12" aria-label="Slide 13: Business Model Canvas: Resources, Partners, Costs">
+      <div class="slide-inner">
+        <h2>Business Model Canvas: Resources, Partners, Costs</h2>
+        
+        <p class='presenter'>Shorouk El-Sayed Badawy</p>
+        <ul><li class='reveal'>Key resources: manufacturing footprint, software stack, data/AI capability, brand, and engineering talent.</li><li class='reveal'>Key partners: raw material suppliers, cell partners, logistics providers, and infrastructure partners.</li><li class='reveal'>Cost structure: manufacturing scale investments, R&amp;D, supply-chain inputs, and service/charging operations.</li></ul>
+        <p class='citation'>Sources: Tesla Form 10-K FY2023; Tesla supplier and manufacturing disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="13" aria-label="Slide 14: Section 3 Summary">
+      <div class="slide-inner">
+        <h2>Section 3 Summary</h2>
+        
+        <p class='presenter'>Shorouk El-Sayed Badawy</p>
+        <ul><li class='reveal'>Tesla’s business model is a platform-like system where manufacturing and software reinforce each other.</li><li class='reveal'>The model is defensible when innovation pace and cost efficiency are sustained together.</li></ul>
+        <p class='citation'>Transition to Section 4: strategy choices and competitive advantage.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="14" aria-label="Slide 15: 4) Strategy and Competitive Advantage">
+      <div class="slide-inner">
+        <h2>4) Strategy and Competitive Advantage</h2>
+        
+        <p class='presenter'>Salma Mohamed Hassan</p>
+        <ul><li class='reveal'>Strategy combines aggressive cost reduction, direct selling, software differentiation, and vertical integration.</li><li class='reveal'>A unified technology stack enables faster feature deployment and operational feedback loops.</li><li class='reveal'>Competitive advantage depends on scale learning, brand trust, and execution consistency.</li></ul>
+        <p class='citation'>Sources: Tesla Form 10-K FY2023; Tesla Investor Day strategy communications.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="15" aria-label="Slide 16: Pricing, Direct Selling, Innovation, Software, Vertical Integration">
+      <div class="slide-inner">
+        <h2>Pricing, Direct Selling, Innovation, Software, Vertical Integration</h2>
+        
+        <p class='presenter'>Salma Mohamed Hassan</p>
+        <ul><li class='reveal'>Dynamic pricing can stimulate demand but may pressure margins and customer sentiment.</li><li class='reveal'>Direct selling supports data continuity and customer experience control.</li><li class='reveal'>In-house software and OTA updates create continuous product evolution post-purchase.</li><li class='reveal'>Vertical integration improves coordination, but concentrates operational and capital intensity risks.</li></ul>
+        <p class='citation'>Sources: Tesla filings and investor communications on pricing and operations.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="16" aria-label="Slide 17: SWOT Analysis">
+      <div class="slide-inner">
+        <h2>SWOT Analysis</h2>
+        
+        <p class='presenter'>Salma Mohamed Hassan</p>
+        <ul><li class='reveal'>Strengths: brand power, software capability, charging ecosystem, manufacturing scale.</li><li class='reveal'>Weaknesses: concentration risk, high execution complexity, sensitivity to leadership signaling.</li><li class='reveal'>Opportunities: energy storage growth, software monetization, global EV adoption expansion.</li><li class='reveal'>Threats: intense pricing competition, policy shifts, supply disruptions, reputation shocks.</li></ul>
+        <p class='citation'>Framework interpretation using Tesla risk disclosures and market reports.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="17" aria-label="Slide 18: Trade-offs Behind Advantage">
+      <div class="slide-inner">
+        <h2>Trade-offs Behind Advantage</h2>
+        
+        <p class='presenter'>Salma Mohamed Hassan</p>
+        <ul><li class='reveal'>Speed vs. control: rapid decisions can outperform peers but increase error cost.</li><li class='reveal'>Integration vs. flexibility: tighter control improves quality loops but can limit optionality.</li><li class='reveal'>Scale vs. customization: global efficiency can conflict with local market adaptation needs.</li></ul>
+        <p class='citation'>Strategy synthesis based on Tesla operating disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="18" aria-label="Slide 19: Section 4 Summary">
+      <div class="slide-inner">
+        <h2>Section 4 Summary</h2>
+        
+        <p class='presenter'>Salma Mohamed Hassan</p>
+        <ul><li class='reveal'>Tesla’s edge is strategic coherence across technology, channel, and operations.</li><li class='reveal'>Sustainable advantage requires balancing speed with governance and resilience.</li></ul>
+        <p class='citation'>Transition to Section 5: leadership and strategic decision processes.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="19" aria-label="Slide 20: 5) Strategic Leadership and Decision-Making">
+      <div class="slide-inner">
+        <h2>5) Strategic Leadership and Decision-Making</h2>
+        
+        <p class='presenter'>Mahmoud Mohamed Mahmoud</p>
+        <ul><li class='reveal'>Tesla leadership has prioritized rapid execution, ambitious targets, and high public visibility.</li><li class='reveal'>Decision-making often reflects founder-led urgency with tight product-operations coupling.</li><li class='reveal'>Governance quality is evaluated through risk controls, board oversight, and transparency.</li></ul>
+        <p class='citation'>Source: Tesla proxy/annual disclosures and governance sections in SEC filings.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="20" aria-label="Slide 21: Leadership and Governance: Balanced Case Study">
+      <div class="slide-inner">
+        <h2>Leadership and Governance: Balanced Case Study</h2>
+        
+        <p class='presenter'>Mahmoud Mohamed Mahmoud</p>
+        <ul><li class='reveal'>Strength case: focused vision, organizational energy, and rapid strategic pivots.</li><li class='reveal'>Risk case: concentration of influence, key-person dependency, and communication volatility.</li><li class='reveal'>Management takeaway: high-growth leadership models need strong governance counterweights.</li></ul>
+        <p class='citation'>Sources: Tesla SEC governance disclosures; public governance analyses.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="21" aria-label="Slide 22: Decision-Making at Scale">
+      <div class="slide-inner">
+        <h2>Decision-Making at Scale</h2>
+        
+        <p class='presenter'>Mahmoud Mohamed Mahmoud</p>
+        <ul><li class='reveal'>As scale grows, ad hoc decisions must be complemented by repeatable management systems.</li><li class='reveal'>Cross-functional coordination between engineering, manufacturing, and finance is a core capability.</li><li class='reveal'>Resilient decision quality requires data discipline, accountability, and scenario planning.</li></ul>
+        <p class='citation'>Management interpretation consistent with Tesla’s operational model.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="22" aria-label="Slide 23: Section 5 Summary">
+      <div class="slide-inner">
+        <h2>Section 5 Summary</h2>
+        
+        <p class='presenter'>Mahmoud Mohamed Mahmoud</p>
+        <ul><li class='reveal'>Tesla demonstrates the power and limits of founder-driven strategic leadership.</li><li class='reveal'>Long-term performance depends on institutionalizing governance as complexity increases.</li></ul>
+        <p class='citation'>Transition to Section 6: people, structure, and culture.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="23" aria-label="Slide 24: 6) Human Resources, Organizational Structure, and Culture">
+      <div class="slide-inner">
+        <h2>6) Human Resources, Organizational Structure, and Culture</h2>
+        
+        <p class='presenter'>Rahaf Essam Salah</p>
+        <ul><li class='reveal'>Tesla’s workforce strategy emphasizes engineering intensity, speed, and hands-on problem solving.</li><li class='reveal'>The structure is functionally strong with operations-engineering coordination around manufacturing goals.</li><li class='reveal'>Culture is often described as high-performance and mission-driven, with demanding execution standards.</li></ul>
+        <p class='citation'>Sources: Tesla Form 10-K FY2023 human capital disclosures and official career materials.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="24" aria-label="Slide 25: HR Structure, Culture, Recruitment">
+      <div class="slide-inner">
+        <h2>HR Structure, Culture, Recruitment</h2>
+        
+        <p class='presenter'>Rahaf Essam Salah</p>
+        <ul><li class='reveal'>Recruitment prioritizes technical depth and execution readiness in fast-changing environments.</li><li class='reveal'>Organizational design supports rapid issue escalation from factory floor to engineering teams.</li><li class='reveal'>Culture supports innovation velocity but requires robust well-being and retention practices.</li></ul>
+        <p class='citation'>Sources: Tesla human capital and workforce disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="25" aria-label="Slide 26: Competencies and Development">
+      <div class="slide-inner">
+        <h2>Competencies and Development</h2>
+        
+        <p class='presenter'>Rahaf Essam Salah</p>
+        <ul><li class='reveal'>Core competencies: systems thinking, automation fluency, data-driven debugging, and cross-team communication.</li><li class='reveal'>Development focus includes role-based training, safety, leadership capability, and continuous improvement skills.</li><li class='reveal'>Sustainable performance depends on balancing intensity with capability development over time.</li></ul>
+        <p class='citation'>HR analysis based on official Tesla disclosures; avoids unsupported claims.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="26" aria-label="Slide 27: Section 6 Summary">
+      <div class="slide-inner">
+        <h2>Section 6 Summary</h2>
+        
+        <p class='presenter'>Rahaf Essam Salah</p>
+        <ul><li class='reveal'>People systems are strategic infrastructure, not support functions, in Tesla’s model.</li><li class='reveal'>Culture can accelerate growth when matched with structured talent development.</li></ul>
+        <p class='citation'>Transition to Section 7: production and supply chain architecture.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="27" aria-label="Slide 28: 7) Production and Supply Chain at Tesla">
+      <div class="slide-inner">
+        <h2>7) Production and Supply Chain at Tesla</h2>
+        
+        <p class='presenter'>Mohamed Hany Abdel Aaty</p>
+        <ul><li class='reveal'>Tesla’s production model combines global gigafactories, localized assembly, and process automation.</li><li class='reveal'>Supply-chain performance directly affects cost, delivery lead times, and gross margin outcomes.</li><li class='reveal'>Operational resilience depends on strategic sourcing and risk diversification.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023 manufacturing and supply sections.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="28" aria-label="Slide 29: Factories and Industrial Footprint">
+      <div class="slide-inner">
+        <h2>Factories and Industrial Footprint</h2>
+        
+        <p class='presenter'>Mohamed Hany Abdel Aaty</p>
+        <ul><li class='reveal'>Major production hubs include Fremont, Shanghai, Berlin, and Texas with differentiated model roles.</li><li class='reveal'>Scaling output requires synchronized capacity in stamping, battery systems, final assembly, and logistics.</li><li class='reveal'>Factory localization can reduce tariff/logistics exposure while increasing regional responsiveness.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023 and official facility disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="29" aria-label="Slide 30: Batteries, Raw Materials, Suppliers, and Risk">
+      <div class="slide-inner">
+        <h2>Batteries, Raw Materials, Suppliers, and Risk</h2>
+        
+        <p class='presenter'>Mohamed Hany Abdel Aaty</p>
+        <ul><li class='reveal'>Battery economics are sensitive to lithium, nickel, graphite, and refining capacity dynamics.</li><li class='reveal'>Supplier concentration and geopolitical factors can affect continuity, pricing, and lead times.</li><li class='reveal'>Risk controls include multi-sourcing, long-term agreements, and design/process innovation.</li></ul>
+        <p class='citation'>Sources: Tesla risk disclosures; public commodity and battery supply analyses.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="30" aria-label="Slide 31: Section 7 Summary">
+      <div class="slide-inner">
+        <h2>Section 7 Summary</h2>
+        
+        <p class='presenter'>Mohamed Hany Abdel Aaty</p>
+        <ul><li class='reveal'>Production excellence is a strategic moat when paired with resilient supply-chain management.</li><li class='reveal'>Future competitiveness depends on battery cost trajectory and manufacturing learning rates.</li></ul>
+        <p class='citation'>Transition to Section 8: marketing and brand systems.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="31" aria-label="Slide 32: 8) Marketing and Brand Building">
+      <div class="slide-inner">
+        <h2>8) Marketing and Brand Building</h2>
+        
+        <p class='presenter'>Abdelrahman Magdy Mohamed Ali</p>
+        <ul><li class='reveal'>Tesla relies heavily on product-driven marketing, digital visibility, and customer advocacy.</li><li class='reveal'>Brand value is tied to innovation perception, performance credibility, and ownership experience.</li><li class='reveal'>Customer journey design (ordering, delivery, charging, software updates) supports differentiation.</li></ul>
+        <p class='citation'>Sources: Tesla communications and customer-experience disclosures.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="32" aria-label="Slide 33: Brand, Customer Experience, Referrals, Community">
+      <div class="slide-inner">
+        <h2>Brand, Customer Experience, Referrals, Community</h2>
+        
+        <p class='presenter'>Abdelrahman Magdy Mohamed Ali</p>
+        <ul><li class='reveal'>Word-of-mouth, owner communities, and referral programs have historically supported awareness efficiency.</li><li class='reveal'>Direct digital channels provide richer customer data and feedback loops than dealer-centric models.</li><li class='reveal'>After-sales service quality is critical to long-term loyalty and brand durability.</li></ul>
+        <p class='citation'>Sources: Tesla referral/community materials and customer disclosure context.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="33" aria-label="Slide 34: Elon Musk’s Public Influence and Reputation Risk">
+      <div class="slide-inner">
+        <h2>Elon Musk’s Public Influence and Reputation Risk</h2>
+        
+        <p class='presenter'>Abdelrahman Magdy Mohamed Ali</p>
+        <ul><li class='reveal'>Public leadership visibility can amplify brand reach and accelerate media attention.</li><li class='reveal'>The same visibility can increase volatility in brand perception and stakeholder reactions.</li><li class='reveal'>Brand governance should separate enduring value propositions from personality-driven narratives.</li></ul>
+        <p class='citation'>Source: Tesla risk-factor disclosures regarding key personnel and reputation sensitivity.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="34" aria-label="Slide 35: Section 8 Summary">
+      <div class="slide-inner">
+        <h2>Section 8 Summary</h2>
+        
+        <p class='presenter'>Abdelrahman Magdy Mohamed Ali</p>
+        <ul><li class='reveal'>Tesla’s brand is a strategic asset built through product, software, and community effects.</li><li class='reveal'>Sustaining trust requires reliable execution and disciplined reputation management.</li></ul>
+        <p class='citation'>Transition to Section 9: financial performance and management.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="35" aria-label="Slide 36: 9) Financial Performance and Management at Tesla">
+      <div class="slide-inner">
+        <h2>9) Financial Performance and Management at Tesla</h2>
+        
+        <p class='presenter'>Evelyn Ishak Boktor</p>
+        <ul><li class='reveal'>Verified financials (USD millions, fiscal years ended Dec 31):</li><li class='reveal'>Revenue: 2021 = 53,823 | 2022 = 81,462 | 2023 = 96,773.</li><li class='reveal'>Net income attributable to common stockholders: 2021 = 5,519 | 2022 = 12,556 | 2023 = 14,997.</li><li class='reveal'>Total assets (2023): 106,618 | Cash, cash equivalents and investments (2023): 29,094.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023 (filed 2024-01-29), consolidated financial statements. Currency: USD millions.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="36" aria-label="Slide 37: Financial Analysis: Mix, Margins, and Capital Discipline">
+      <div class="slide-inner">
+        <h2>Financial Analysis: Mix, Margins, and Capital Discipline</h2>
+        
+        <p class='presenter'>Evelyn Ishak Boktor</p>
+        <ul><li class='reveal'>2023 revenue mix (USD millions): Automotive 82,419; Energy generation &amp; storage 6,035; Services &amp; other 8,319.</li><li class='reveal'>2023 operating income: 8,891 (USD millions), indicating margin pressure versus prior-year peak conditions.</li><li class='reveal'>Management focus: sustain growth while protecting free cash generation and balance-sheet flexibility.</li></ul>
+        <p class='citation'>Source: Tesla Form 10-K FY2023, segment and income-statement disclosures. Currency: USD millions.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="37" aria-label="Slide 38: Section 9 Summary">
+      <div class="slide-inner">
+        <h2>Section 9 Summary</h2>
+        
+        <p class='presenter'>Evelyn Ishak Boktor</p>
+        <ul><li class='reveal'>Tesla remains financially significant in scale, but profitability is sensitive to pricing and cost cycles.</li><li class='reveal'>Strong liquidity supports strategic optionality during market volatility.</li></ul>
+        <p class='citation'>Transition to Section 10: future challenges and opportunities.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="38" aria-label="Slide 39: 10) Challenges and Future Opportunities">
+      <div class="slide-inner">
+        <h2>10) Challenges and Future Opportunities</h2>
+        
+        <p class='presenter'>Fares Atef Ismail</p>
+        <ul><li class='reveal'>Challenges: price competition, regulatory shifts, supply-chain concentration, and execution complexity at scale.</li><li class='reveal'>Opportunities: energy storage expansion, manufacturing innovation, software monetization, and new segments.</li><li class='reveal'>Current vs announced capabilities: today’s deployed systems remain driver-supervised; announced autonomy/robotics ambitions remain roadmap-dependent until validated at scale.</li></ul>
+        <p class='citation'>Sources: Tesla risk factors and product communications; capability status should distinguish deployed vs announced.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="39" aria-label="Slide 40: Section 10 Summary">
+      <div class="slide-inner">
+        <h2>Section 10 Summary</h2>
+        
+        <p class='presenter'>Fares Atef Ismail</p>
+        <ul><li class='reveal'>Future value creation depends on disciplined execution under uncertainty, not announcements alone.</li><li class='reveal'>Managers should assess optionality using scenario-based planning and evidence thresholds.</li></ul>
+        <p class='citation'>Transition to final section: conclusion and lessons learned.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="40" aria-label="Slide 41: 11) Conclusion and Lessons Learned">
+      <div class="slide-inner">
+        <h2>11) Conclusion and Lessons Learned</h2>
+        
+        <p class='presenter'>Sama Mohamed Sedik</p>
+        <ul><li class='reveal'>Tesla’s journey demonstrates how integrated strategy can transform an industry from niche to mainstream transition.</li><li class='reveal'>Leadership, operations, finance, and culture must align continuously to convert innovation into durable advantage.</li><li class='reveal'>The most transferable lesson: strategic coherence is as important as technological novelty.</li></ul>
+        <p class='citation'>Conclusion synthesized from the full case analysis and cited references.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="41" aria-label="Slide 42: Final Conclusion">
+      <div class="slide-inner">
+        <h2>Final Conclusion</h2>
+        
+        <p class='presenter'>Sama Mohamed Sedik</p>
+        <ul><li class='reveal'>Tesla is a strong business-management case because it combines breakthrough innovation with high-stakes execution.</li><li class='reveal'>For organizations: build adaptive systems, protect governance quality, and validate future claims with measurable outcomes.</li><li class='reveal'>For researchers and managers: monitor the interaction between strategy, capability, and market timing.</li></ul>
+        <p class='citation'>End of presentation.</p>
+      </div>
+    </section>
+    
+    <section class="slide" data-index="42" aria-label="Slide 43: References">
+      <div class="slide-inner">
+        <h2>References</h2>
+        
+        <p class='presenter'>Compiled Reference List</p>
+        <ul><li class='reveal'>Tesla, Inc. Form 10-K for fiscal year ended Dec 31, 2023 (filed Jan 29, 2024).</li><li class='reveal'>Tesla, Inc. Q4 and FY 2023 Update Letter (Investor Relations).</li><li class='reveal'>Tesla, Inc. Impact Report (latest available official edition).</li><li class='reveal'>International Energy Agency (IEA), Global EV Outlook (latest edition).</li><li class='reveal'>Relevant SEC filings and governance disclosures (Tesla proxy/annual documents).</li></ul>
+        <p class='citation'>Note: Figures are presented with explicit periods/currency/units where used and are attributed to official disclosures.</p>
+      </div>
+    </section>
+    
+      <div class="controls">
+        <button class="btn" id="homeBtn" aria-label="First slide">Home</button>
+        <button class="btn" id="prevBtn" aria-label="Previous slide">◀ Prev</button>
+        <button class="btn" id="nextBtn" aria-label="Next slide">Next ▶</button>
+        <button class="btn" id="overviewBtn" aria-label="Toggle overview">Overview</button>
+        <button class="btn" id="fsBtn" aria-label="Toggle full screen">Full Screen</button>
+        <div class="meta">
+          <span id="counter">1 / 43</span>
+        </div>
+      </div>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+      <aside class="overview" id="overview" aria-label="Slide overview" aria-hidden="true">
+        <div class="overview-grid" id="overviewGrid"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const counter = document.getElementById('counter');
+    const progress = document.getElementById('progress');
+    const overview = document.getElementById('overview');
+    const overviewGrid = document.getElementById('overviewGrid');
+    let index = 0;
+
+    function revealsOf(slide) {
+      return [...slide.querySelectorAll('.reveal')];
+    }
+
+    function resetReveals(slide) {
+      revealsOf(slide).forEach(el => el.classList.remove('show'));
+    }
+
+    function fullyReveal(slide) {
+      revealsOf(slide).forEach(el => el.classList.add('show'));
+    }
+
+    function showNextReveal() {
+      const hidden = revealsOf(slides[index]).find(el => !el.classList.contains('show'));
+      if (hidden) { hidden.classList.add('show'); return true; }
+      return false;
+    }
+
+    function showPrevReveal() {
+      const shown = revealsOf(slides[index]).filter(el => el.classList.contains('show'));
+      if (shown.length > 0) { shown[shown.length - 1].classList.remove('show'); return true; }
+      return false;
+    }
+
+    function render() {
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === index);
+        s.classList.toggle('prev', i < index);
+      });
+      resetReveals(slides[index]);
+      showNextReveal();
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+    }
+
+    function go(n) {
+      index = Math.max(0, Math.min(slides.length - 1, n));
+      render();
+    }
+    function next() {
+      if (!showNextReveal() && index < slides.length - 1) go(index + 1);
+    }
+    function prev() {
+      if (!showPrevReveal() && index > 0) {
+        go(index - 1);
+        fullyReveal(slides[index]);
+      }
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+    document.getElementById('homeBtn').addEventListener('click', () => go(0));
+
+    document.getElementById('fsBtn').addEventListener('click', async () => {
+      if (!document.fullscreenElement) await document.documentElement.requestFullscreen?.();
+      else await document.exitFullscreen?.();
+    });
+
+    function toggleOverview(forceOpen) {
+      const open = forceOpen ?? !overview.classList.contains('open');
+      overview.classList.toggle('open', open);
+      overview.setAttribute('aria-hidden', String(!open));
+    }
+    document.getElementById('overviewBtn').addEventListener('click', () => toggleOverview());
+
+    overviewGrid.innerHTML = slides.map((s, i) => `
+      <button class="ov-card" data-go="${i}" aria-label="Go to slide ${i+1}">
+        <div class="idx">Slide ${i+1}</div>
+        <div>${s.querySelector('h2').textContent}</div>
+      </button>`).join('');
+
+    overviewGrid.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-go]');
+      if (!btn) return;
+      go(Number(btn.dataset.go));
+      toggleOverview(false);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (overview.classList.contains('open') && e.key !== 'Escape') return;
+      if (['ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); next(); }
+      else if (['ArrowLeft','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0); }
+      else if (e.key.toLowerCase() === 'o') { e.preventDefault(); toggleOverview(); }
+      else if (e.key === 'Escape') { toggleOverview(false); }
+    });
+
+    let touchX = null;
+    document.getElementById('deck').addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, {passive: true});
+    document.getElementById('deck').addEventListener('touchend', e => {
+      if (touchX == null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 35) (dx < 0 ? next : prev)();
+      touchX = null;
+    }, {passive: true});
+
+    render();
+  </script>
+</body>
+</html>
